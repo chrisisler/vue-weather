@@ -1,9 +1,16 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    :class="
+      typeof weather.main != 'undefined' && weather.main.temp > 55
+        ? 'hot-bg'
+        : ''
+    "
+  >
     <main class="columns">
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Search places..."
         v-model="query"
         v-on:keyup.enter="fetchWeather"
       />
@@ -15,7 +22,7 @@
           {{ computeDate() }}
         </div>
         <div class="weather-results temperature">
-          {{ Math.round(weather.main.temp) }}°f
+          {{ Math.round(weather.main.temp) }}°F
         </div>
         <div class="weather-results description">
           {{ weather.weather[0].main }}
@@ -100,6 +107,10 @@ body {
   text-align: center;
 }
 
+#app.hot-bg {
+  background-image: url('./assets/warm-bg.jpg');
+}
+
 .columns {
   display: flex;
   flex-direction: column;
@@ -111,13 +122,13 @@ body {
 input {
   display: block;
   width: 100%;
-  padding: 1rem;
-  font-size: 1.25rem;
+  padding: 1rem 1.2rem;
+  font-size: 1.2rem;
   border: none;
   outline: none;
   background: none;
   border-radius: 8px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   background-color: #fff;
 }
 
