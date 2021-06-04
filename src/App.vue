@@ -15,18 +15,10 @@
         v-on:keyup.enter="fetchWeather"
       />
       <div class="columns" v-if="typeof weather.main != 'undefined'">
-        <div class="weather-results location">
-          {{ weather.name }}, {{ weather.sys.country }}
-        </div>
-        <div class="weather-results date">
-          {{ computeDate() }}
-        </div>
-        <div class="weather-results temperature">
-          {{ Math.round(weather.main.temp) }}°F
-        </div>
-        <div class="weather-results description">
-          {{ weather.weather[0].main }}
-        </div>
+        <div class="weather-results location">{{ weather.name }}, {{ weather.sys.country }}</div>
+        <div class="weather-results date">{{ computeDate() }}</div>
+        <div class="weather-results temperature">{{ Math.round(weather.main.temp) }}°F</div>
+        <div class="weather-results description">{{ weather.weather[0].main }}</div>
       </div>
     </main>
   </div>
@@ -128,7 +120,11 @@ input {
   outline: none;
   background: none;
   border-radius: 8px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ddd;
+}
+input:focus {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
   background-color: #fff;
 }
 
